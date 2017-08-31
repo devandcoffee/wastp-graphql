@@ -16,6 +16,18 @@ Start containers, run:
 docker-compose up -d
 ```
 
+Execute migrations:
+
+```bash
+npm run db:migrate
+```
+
+Execute seeds:
+
+```bash
+npm run db:seed
+```
+
 That's it, if all is okay, you could go to http://localhost:3000/graphiql
 
 To stop the containers, you can run:
