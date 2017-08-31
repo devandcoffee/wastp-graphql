@@ -7,6 +7,7 @@
     "start": "nodemon index.js",
     "db:migrate": "knex migrate:latest --knexfile=db/knexfile.js",
     "db:seed": "knex seed:run --knexfile=db/knexfile.js",
+    "db:rollback": "knex migrate:rollback --knexfile=db/knexfile.js",
     "knex": "knex --knexfile=db/knexfile.js"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "graphql": "^0.11.2",
     "graphql-tools": "^1.2.2",
     "knex": "^0.13.0",
+    "lodash": "^4.17.4",
     "objection": "^0.8.8",
     "pg": "^7.2.0"
   },

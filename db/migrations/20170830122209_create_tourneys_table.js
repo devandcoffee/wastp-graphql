@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       table.string('description')
       table.date('start_date')
       table.integer('amount_teams').unsigned()
-      table.integer('tourney_type_id').unsigned()
+      table.integer('tourney_type_id').references('tourneys_types.id').unsigned()
     })
   ])
 };
