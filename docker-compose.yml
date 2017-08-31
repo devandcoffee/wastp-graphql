@@ -12,3 +12,11 @@ services:
       POSTGRES_USER: admin
       POSTGRES_DB: wastpdb
       POSTGRES_PASSWORD: admin
+  graphql:
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
