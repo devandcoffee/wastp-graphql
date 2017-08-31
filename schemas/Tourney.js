@@ -3,8 +3,8 @@ module.exports = `
     id: ID!
     name: String!
     description: String
-    startDate: String
-    amountTeams: Int
+    start_date: String
+    amount_teams: Int
     type: Tourneytype
   }
 
