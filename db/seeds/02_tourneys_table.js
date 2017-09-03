@@ -2,9 +2,8 @@ const casual = require('casual')
 
 exports.seed = function(knex, Promise) {
   return knex('tourneys').del().then(() => {
-    const promises = Array(40).fill().map((_, i) => {
+    const promises = Array(40).fill().map(() => {
       return knex('tourneys').insert([{
-        id: i + 1,
         name: casual.words(2),
         description: casual.sentences(2),
         start_date: casual.date('YYYY-MM-DD'),

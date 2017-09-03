@@ -10,6 +10,15 @@ const resolvers = {
     user: (_, args) => User.query().eager('tourneys').findById(args.id),
     tourneysTypes: () => TourneyType.query().eager('tourneys'),
     tourneyType: (_, args) => TourneyType.query().eager('tourneys').findById(args.id)
+  },
+  Mutation: {
+    createTourney: (_, args) => {
+      console.log(args.tourney)
+      return Tourney.query().insert(args.tourney)
+    },
+    updateTourney: (_, args) => {
+      return Tourney.query().patchAndFetchById(args.id, args.tourney)
+    }
   }
 }
 

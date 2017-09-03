@@ -12,6 +12,12 @@ const rootQuery = `
     tourneysTypes: [TourneyType]
     tourneyType(id: Int!): TourneyType
   }
+
+  type Mutation {
+    createTourney(tourney: NewTourney): Tourney
+    updateTourney(id: Int!, tourney: EditTourney): Tourney
+    deleteTourney(id: Int!): Tourney
+  }
 `
 
 const schema = makeExecutableSchema({
