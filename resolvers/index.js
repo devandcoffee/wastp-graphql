@@ -17,6 +17,11 @@ const resolvers = {
     },
     updateTourney: (_, args) => {
       return Tourney.query().patchAndFetchById(args.id, args.tourney)
+    },
+    deleteTourney: (_, args) => {
+      return Tourney.query().findById(args.id).then((tourney) => {
+        return Tourney.query().where('id', args.id).softDelete().then(() => tourney)
+      })
     }
   }
 }
