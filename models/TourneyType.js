@@ -1,4 +1,4 @@
-const { Model } = require('objection')
+const Model = require('./CustomModel')
 const path = require('path')
 
 class TourneyType extends Model {

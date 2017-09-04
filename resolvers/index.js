@@ -13,7 +13,6 @@ const resolvers = {
   },
   Mutation: {
     createTourney: (_, args) => {
-      console.log(args.tourney)
       return Tourney.query().insert(args.tourney)
     },
     updateTourney: (_, args) => {

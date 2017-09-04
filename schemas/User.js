@@ -5,6 +5,8 @@ const User = `
     lastname: String!
     email: String!
     avatar: String
+    created_at: String
+    updated_at: String
     tourneys: [Tourney]
   }
 `

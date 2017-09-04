@@ -5,6 +5,8 @@ const Tourney = `
     description: String
     start_date: String
     amount_teams: Int
+    created_at: String
+    updated_at: String
     user: User
     tourney_type: TourneyType
   }
@@ -12,6 +14,8 @@ const Tourney = `
   type TourneyType {
     id: ID!
     name: String!
+    created_at: String
+    updated_at: String
     tourneys: [Tourney]
   }
 

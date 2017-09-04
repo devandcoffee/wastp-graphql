@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('lastname')
     table.string('email')
     table.string('avatar')
+    table.timestamps(true)
   })
 }
 
