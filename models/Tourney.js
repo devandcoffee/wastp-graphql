@@ -1,7 +1,8 @@
-const { Model } = require('objection')
+const Model = require('./CustomModel')
 const path = require('path')
 
 class Tourney extends Model {
+
   static get tableName() {
     return 'tourneys'
   }

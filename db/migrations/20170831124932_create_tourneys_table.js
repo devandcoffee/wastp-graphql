@@ -7,6 +7,8 @@ exports.up = function(knex, Promise) {
     table.integer('amount_teams').unsigned()
     table.integer('user_id').references('users.id').unsigned()
     table.integer('tourney_type_id').references('tourneys_types.id').unsigned()
+    table.timestamps(true)
+    table.timestamp('deleted_at')
   })
 }
 

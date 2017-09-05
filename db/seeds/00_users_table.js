@@ -7,7 +7,9 @@ exports.seed = function(knex, Promise) {
         firstname: casual.first_name,
         lastname: casual.last_name,
         email: casual.email,
-        avatar: 'http://www.gravatar.com/avatar/?s=200'
+        avatar: 'http://www.gravatar.com/avatar/?s=200',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       }])
     })
 
