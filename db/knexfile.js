@@ -1,14 +1,14 @@
-// Update with your config settings.
+const config = require('../config')
 
 module.exports = {
 
   development: {
     client: 'pg',
     connection: {
-      host : 'postgres',
-      user : 'admin',
-      password : 'admin',
-      database : 'wastpdb'
+      host : config.db.host,
+      user : config.db.user,
+      password : config.db.password,
+      database : config.db.database
     },
     migrations: {
       directory: `${__dirname}/migrations`

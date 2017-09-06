@@ -9,6 +9,21 @@ const User = `
     updated_at: String
     tourneys: [Tourney]
   }
+
+  type SignInPayload {
+    token: String
+    user: User
+  }
+
+  input NewUser {
+    firstname: String!
+    lastname: String!
+  }
+
+  input AuthData {
+    email: String!
+    password: String
+  }
 `
 
 module.exports = User

@@ -17,6 +17,8 @@ const rootQuery = `
     createTourney(tourney: NewTourney): Tourney
     updateTourney(id: Int!, tourney: EditTourney): Tourney
     deleteTourney(id: Int!): Tourney
+    signUp(user: NewUser, authData: AuthData): User
+    signIn(authData: AuthData): SignInPayload
   }
 `
 

@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.string('firstname')
     table.string('lastname')
     table.string('email')
+    table.string('password')
     table.string('avatar')
     table.timestamps(true)
     table.timestamp('deleted_at')

@@ -2,6 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const schema = require('./schemas')
+const config = require('./config')
+
+const port = config.port
 
 require('./db/setup')
 
@@ -20,8 +23,6 @@ app.use(
   graphiqlExpress({ endpointURL: '/graphql' })
 )
 
-const PORT = 3000
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`)
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`)
 })
