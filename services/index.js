@@ -5,7 +5,7 @@ const config = require('../config')
 
 function createToken(user) {
   const payload = {
-    sub: user._id,
+    sub: user.id,
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix(),
   }
@@ -42,8 +42,13 @@ function encryptPassword(password) {
   return bcrypt.hash(password, 10).then((hash) => hash)
 }
 
+function checkPassword(password, hash) {
+  return bcrypt.compare(password, hash).then((res) => res)
+}
+
 module.exports = {
   createToken,
   decodeToken,
-  encryptPassword
+  encryptPassword,
+  checkPassword
 }
