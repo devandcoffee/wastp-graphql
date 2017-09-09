@@ -8,7 +8,7 @@ const rootQuery = `
     tourneys: [Tourney]
     tourney(id: Int!): Tourney
     users: [User]
-    user(id: Int!): User
+    user: User
     tourneysTypes: [TourneyType]
     tourneyType(id: Int!): TourneyType
   }

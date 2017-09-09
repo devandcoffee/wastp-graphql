@@ -14,6 +14,12 @@ const buildOptions = async (req, res) => {
   return {
     context: { user },
     schema,
+    formatError: (error) => {
+      return {
+        name: error.name,
+        message: error.message
+      }
+    }
   }
 }
 

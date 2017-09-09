@@ -3,8 +3,18 @@ const services = require('../services')
 
 const userResolvers = {
   Query: {
-    users: (_, args, context) => User.query().eager('tourneys'),
-    user: (_, args) => User.query().eager('tourneys').findById(args.id)
+    users: (_, args, context) => {
+      if (context.user) {
+        return User.query().eager('tourneys')
+      }
+      throw new Error(`User not authorized`)
+    },
+    user: (_, args, context) => {
+      if (context.user) {
+        return User.query().eager('tourneys').findById(context.user.id)
+      }
+      throw new Error(`User not authorized`)
+    }
   },
   Mutation: {
     signUp: (_, args) => {
