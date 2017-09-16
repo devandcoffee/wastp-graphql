@@ -15,6 +15,14 @@ class User extends Model {
           from: 'users.id',
           to: 'tourneys.user_id'
         }
+      },
+      players: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/Player'),
+        join: {
+          from: 'users.id',
+          to: 'players.user_id'
+        }
       }
     }
   }
