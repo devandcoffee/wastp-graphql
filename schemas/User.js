@@ -8,6 +8,7 @@ const User = `
     created_at: String
     updated_at: String
     tourneys: [Tourney]
+    players: [Player]
   }
 
   type SignInPayload {
