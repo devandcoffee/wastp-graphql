@@ -1,14 +1,15 @@
 const User = `
   type User {
     id: ID!
+    tourneys: [Tourney]
+    teams: [Team]
+    players: [Player]
     firstname: String!
     lastname: String!
     email: String!
     avatar: String
     created_at: String
     updated_at: String
-    tourneys: [Tourney]
-    players: [Player]
   }
 
   type SignInPayload {

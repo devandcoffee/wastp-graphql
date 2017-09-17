@@ -3,8 +3,8 @@ const TourneyType = require('../models/TourneyType')
 
 const tourneyResolvers = {
   Query: {
-    tourneys: () => Tourney.query().eager('[tourney_type, user]'),
-    tourney: (_, args) => Tourney.query().eager('[tourney_type, user]').findById(args.id),
+    tourneys: () => Tourney.query().eager('[tourney_type, user, teams]'),
+    tourney: (_, args) => Tourney.query().eager('[tourney_type, user, teams]').findById(args.id),
     tourneysTypes: () => TourneyType.query().eager('tourneys'),
     tourneyType: (_, args) => TourneyType.query().eager('tourneys').findById(args.id)
   },

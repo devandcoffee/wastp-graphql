@@ -1,10 +1,10 @@
 const Model = require('./CustomModel')
 const path = require('path')
 
-class Tourney extends Model {
+class Team extends Model {
 
   static get tableName() {
-    return 'tourneys'
+    return 'teams'
   }
 
   static get relationMappings() {
@@ -13,28 +13,28 @@ class Tourney extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: path.join(__dirname, '/User'),
         join: {
-          from: 'tourneys.user_id',
+          from: 'teams.user_id',
           to: 'users.id'
         }
       },
-      tourney_type: {
+      tourney: {
         relation: Model.BelongsToOneRelation,
-        modelClass: path.join(__dirname, '/TourneyType'),
+        modelClass: path.join(__dirname, 'Tourney'),
         join: {
-          from: 'tourneys.tourney_type_id',
-          to: 'tourneys_types.id'
+          from: 'teams.tourney_id',
+          to: 'tourneys.id'
         }
       },
-      teams: {
+      players: {
         relation: Model.HasManyRelation,
-        modelClass: path.join(__dirname, '/Team'),
+        modelClass:path.join(__dirname, '/Player'),
         join: {
-          from: 'tourneys.id',
-          to: 'teams.tourney_id'
+          from: 'teams.id',
+          to: 'players.team_id'
         }
       }
     }
   }
 }
 
-module.exports = Tourney
+module.exports = Team
