@@ -3,7 +3,14 @@ const TourneyType = require('../models/TourneyType')
 
 const tourneyResolvers = {
   Query: {
-    tourneys: () => Tourney.query().eager('[tourney_type, user]'),
+    tourneys: (_, args) => {
+      let cursor = args.after ? Buffer.from(args.after, 'base64 ').toString('ascii') : 'a'
+      let limit = args.limit ? args.limit : 10
+
+      const tourneys = await Tourney.query().where('name', '>', cursor).limit(limit).eager('[tourney_type, user]')
+      const totalCount = await Tourney.query()
+      console.log(tourneys)
+    },
     tourney: (_, args) => Tourney.query().eager('[tourney_type, user]').findById(args.id),
     tourneysTypes: () => TourneyType.query().eager('tourneys'),
     tourneyType: (_, args) => TourneyType.query().eager('tourneys').findById(args.id)

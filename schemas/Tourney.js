@@ -1,4 +1,10 @@
 const Tourney = `
+  type Tourneys {
+    totalCount: Int
+    edges: [TourneyEdge]
+    pageInfo: PageInfo!
+  }
+
   type Tourney {
     id: ID!
     name: String!
@@ -17,6 +23,11 @@ const Tourney = `
     created_at: String
     updated_at: String
     tourneys: [Tourney]
+  }
+
+  type TourneyEdge {
+    cursor: String!
+    node: Tourney
   }
 
   input NewTourney {
