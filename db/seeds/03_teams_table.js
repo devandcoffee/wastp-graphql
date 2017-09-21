@@ -2,7 +2,7 @@ const casual = require('casual')
 
 exports.seed = function(knex, Promise) {
   return knex('teams').del().then(function () {
-      const promises = Array(40).fill().map(() => {
+      const promises = Array(20).fill().map(() => {
         return knex('teams').insert([{
             user_id: casual.integer(1, 10),
             tourney_id: casual.integer(1,10),
