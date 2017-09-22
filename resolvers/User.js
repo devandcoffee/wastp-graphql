@@ -5,13 +5,13 @@ const userResolvers = {
   Query: {
     users: (_, args, context) => {
       if (context.user) {
-        return User.query().eager('[tourneys, players]')
+        return User.query().eager('[tourneys, teams, players]')
       }
       throw new Error(`User not authorized`)
     },
     user: (_, args, context) => {
       if (context.user) {
-        return User.query().eager('[tourneys, players]').findById(context.user.id)
+        return User.query().eager('[tourneys, teams, players]').findById(context.user.id)
       }
       throw new Error(`User not authorized`)
     }

@@ -8,7 +8,7 @@ const tourneyResolvers = {
       let limit = args.limit ? args.limit : 10
 
       // Get tourneys
-      const tourneys = await Tourney.query().orderBy('name').where('name', '>', cursor).limit(limit).eager('[tourney_type, user]')
+      const tourneys = await Tourney.query().orderBy('name').where('name', '>', cursor).limit(limit).eager('[tourney_type, user, teams]')
 
       // Fill edges array
       const edges = await tourneys.map((tourney) => {
@@ -41,7 +41,7 @@ const tourneyResolvers = {
         }
       }
     },
-    tourney: (_, args) => Tourney.query().eager('[tourney_type, user]').findById(args.id),
+    tourney: (_, args) => Tourney.query().eager('[tourney_type, user, teams]').findById(args.id),
     tourneysTypes: () => TourneyType.query().eager('tourneys'),
     tourneyType: (_, args) => TourneyType.query().eager('tourneys').findById(args.id)
   },
