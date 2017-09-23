@@ -14,22 +14,13 @@ const Player = `
   }
 
   input NewPlayer {
+    team_id: Int
     email: String
-    status: String
-    goals: Int
-    wins: Int
-    loses: Int
-    ties: Int
-    user_id: Int!
   }
 
   input EditPlayer {
+    team_id: Int
     email: String
-    status: String
-    goals: Int
-    wins: Int
-    loses: Int
-    ties: Int
   }
 `
 
