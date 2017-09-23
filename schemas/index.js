@@ -4,16 +4,30 @@ const Tourney = require('./Tourney')
 const User = require('./User')
 const Player = require('./Player')
 const Team = require('./Team')
+const CommonTypes = require('./CommonTypes')
 
 const rootQuery = `
   type Query {
-    tourneys: [Tourney]
+    tourneys(
+      # Amount of tourneys to fetch
+      first: Int!
+
+      # Get records after this cursor
+      after: String
+    ): Tourneys
+
     tourney(id: Int!): Tourney
+
     users: [User]
+
     user: User
+
     tourneysTypes: [TourneyType]
+
     tourneyType(id: Int!): TourneyType
+
     players: [Player]
+
     player(id: Int!): Player
     teams: [Team]
     team(id: Int!): Team
@@ -35,7 +49,7 @@ const rootQuery = `
 `
 
 const schema = makeExecutableSchema({
-  typeDefs: [rootQuery, Tourney, User, Player, Team],
+  typeDefs: [rootQuery, Tourney, User, Player, Team, CommonTypes],
   resolvers
 })
 
