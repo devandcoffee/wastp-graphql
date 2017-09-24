@@ -50,7 +50,7 @@ const tourneyResolvers = {
       return Tourney.query().insert(args.tourney)
     },
     updateTourney: (_, args) => {
-      return Tourney.query().patchAndFetchById(args.id, args.tourney)
+      return Tourney.query().eager('[tourney_type, user]').patchAndFetchById(args.id, args.tourney)
     },
     deleteTourney: (_, args) => {
       return Tourney.query().findById(args.id).then((tourney) => {
