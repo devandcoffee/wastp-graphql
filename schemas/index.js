@@ -8,13 +8,19 @@ const CommonTypes = require('./CommonTypes')
 
 const rootQuery = `
   type Query {
-    tourneys(
+    tourneysWithCursor(
       # Amount of tourneys to fetch
       first: Int!
 
       # Get records after this cursor
       after: String
     ): Tourneys
+
+    tourneysWithOffset(
+      limit: Int!
+
+      offset: Int!
+    ): TourneysWithMeta
 
     tourney(id: Int!): Tourney
 

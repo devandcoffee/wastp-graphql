@@ -5,6 +5,11 @@ const Tourney = `
     pageInfo: PageInfo!
   }
 
+  type TourneysWithMeta {
+    tourneys: [Tourney]
+    metaInfo: MetaInfo
+  }
+
   type Tourney {
     id: ID!
     user: User

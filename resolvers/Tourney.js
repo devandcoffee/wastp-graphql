@@ -3,12 +3,12 @@ const TourneyType = require('../models/TourneyType')
 
 const tourneyResolvers = {
   Query: {
-    tourneys: async (_, args) => {
+    tourneysWithCursor: async (_, args) => {
       let cursor = args.after ? Buffer.from(args.after, 'base64').toString('ascii') : 'a'
-      let limit = args.limit ? args.limit : 10
+      let first = args.first ? args.first : 10
 
       // Get tourneys
-      const tourneys = await Tourney.query().orderBy('name').where('name', '>', cursor).limit(limit).eager('[tourney_type, user, teams]')
+      const tourneys = await Tourney.query().orderBy('name').where('name', '>', cursor).limit(first).eager('[tourney_type, user, teams]')
 
       // Fill edges array
       const edges = await tourneys.map((tourney) => {
@@ -38,6 +38,21 @@ const tourneyResolvers = {
         pageInfo: {
           endCursor,
           hasNextPage
+        }
+      }
+    },
+    tourneysWithOffset: async (_, args) => {
+      const limit = args.limit = args.limit ? args.limit : 10
+      const offset = args.offset ? args.offset * limit : 0
+
+      const tourneys = await Tourney.query().offset(offset).limit(limit).eager('[tourney_type, user, teams]')
+
+      const total = await Tourney.query().count().first()
+
+      return {
+        tourneys,
+        metaInfo: {
+          totalCount: total.count
         }
       }
     },
