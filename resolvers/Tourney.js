@@ -41,6 +41,21 @@ const tourneyResolvers = {
         }
       }
     },
+    tourneysWithOffset: async (_, args) => {
+      const limit = args.limit = args.limit ? args.limit : 10
+      const offset = args.offset ? args.offset * limit : 0
+
+      const tourneys = await Tourney.query().offset(offset).limit(limit).eager('[tourney_type, user, teams]')
+
+      const total = await Tourney.query().count().first()
+
+      return {
+        tourneys,
+        metaInfo: {
+          totalCount: total.count
+        }
+      }
+    },
     tourney: (_, args) => Tourney.query().eager('[tourney_type, user, teams]').findById(args.id),
     tourneysTypes: () => TourneyType.query().eager('tourneys'),
     tourneyType: (_, args) => TourneyType.query().eager('tourneys').findById(args.id)

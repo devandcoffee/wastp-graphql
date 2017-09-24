@@ -16,6 +16,12 @@ const rootQuery = `
       after: String
     ): Tourneys
 
+    tourneysWithOffset(
+      limit: Int!
+
+      offset: Int!
+    ): TourneysWithMeta
+
     tourney(id: Int!): Tourney
 
     users: [User]
