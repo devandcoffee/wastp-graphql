@@ -8,7 +8,7 @@ const CommonTypes = require('./CommonTypes')
 
 const rootQuery = `
   type Query {
-    tourneys(
+    tourneysWithCursor(
       # Amount of tourneys to fetch
       first: Int!
 
