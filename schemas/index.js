@@ -26,7 +26,13 @@ const rootQuery = `
 
     tourneyType(id: Int!): TourneyType
 
-    players: [Player]
+    players(
+      #Amount of players to fetch
+      first: Int!
+
+      #Get records after this cursor
+      after: String
+    ): Players
 
     player(id: Int!): Player
     teams: [Team]
@@ -37,12 +43,14 @@ const rootQuery = `
     createTourney(tourney: NewTourney): Tourney
     updateTourney(id: Int!, tourney: EditTourney): Tourney
     deleteTourney(id: Int!): Tourney
-    createPlayer(player: NewPlayer): Player
-    updatePlayer(id: Int!, player: EditPlayer): Player
-    deletePlayer(id: Int!) : Player
-    createTeam(team: NewTeam) : Team
-    updateTeam(id: Int!, team: EditTeam) : Team
-    deleteTeam(id: Int!) : Team
+    createPlayer(player: PlayerMutation): Player
+    updatePlayer(id: Int!, player: PlayerMutation): Player
+    updatePlayerStatus(id: Int!, status: String): Player
+    updatePlayerStats(id: Int!, player: EditPlayerStats): Player
+    deletePlayer(id: Int!): Player
+    createTeam(team: NewTeam): Team
+    updateTeam(id: Int!, team: EditTeam): Team
+    deleteTeam(id: Int!): Team
     signUp(user: NewUser, authData: AuthData): User
     signIn(authData: AuthData): SignInPayload
   }

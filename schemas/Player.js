@@ -1,4 +1,15 @@
 const Player = `
+  type Players {
+    totalCount: Int
+    edges: [PlayerEdge]
+    pageInfo: PageInfo!
+  }
+
+  type PlayerEdge {
+    cursor: String!
+    node: Player
+  }
+
   type Player {
     id: ID!
     user: User
@@ -13,14 +24,16 @@ const Player = `
     updated_at: String
   }
 
-  input NewPlayer {
+  input PlayerMutation {
     team_id: Int
     email: String
   }
 
-  input EditPlayer {
-    team_id: Int
-    email: String
+  input EditPlayerStats {
+    goals: Int
+    wins: Int
+    loses: Int
+    ties: Int
   }
 `
 
