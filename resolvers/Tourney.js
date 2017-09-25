@@ -52,7 +52,8 @@ const tourneyResolvers = {
       return {
         tourneys,
         metaInfo: {
-          totalCount: total.count
+          totalCount: total.count,
+          currentPage: offset
         }
       }
     },

@@ -6,6 +6,7 @@ const CommonTypes = `
 
   type MetaInfo {
     totalCount: Int
+    currentPage: Int
   }
 `
 
