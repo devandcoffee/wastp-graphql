@@ -2,7 +2,7 @@ const casual = require('casual')
 
 exports.seed = function(knex, Promise) {
   return knex('tourneys').del().then(() => {
-    const promises = Array(40).fill().map(() => {
+    let promises = Array(40).fill().map(() => {
       return knex('tourneys').insert([{
         name: casual.words(2),
         description: casual.sentences(2),
@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
         updated_at: new Date().toISOString()
       }])
     })
-
+    promises.push(knex('tourneys').insert({name: "Liga de Programadores", description: "Programa y gana", tourney_type_id: 2, user_id: 1}))
     return Promise.all(promises)
   })
 }

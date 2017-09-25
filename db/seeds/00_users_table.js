@@ -3,7 +3,7 @@ const services = require('../../services')
 
 exports.seed = function(knex, Promise) {
   return knex('users').del().then(() => {
-    const promises = Array(10).fill().map(() => {
+    let promises = Array(10).fill().map(() => {
       return services.encryptPassword('secret').then((hash) => {
         return knex('users').insert([{
           firstname: casual.first_name,
@@ -16,6 +16,7 @@ exports.seed = function(knex, Promise) {
         }])
       })
     })
+    promises.push(knex('users').insert({firstname: "Dev", lastname:"Coffee", email:"admin", password:"admin"}))
 
     return Promise.all(promises)
   })
