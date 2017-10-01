@@ -43,10 +43,7 @@ const playerResolvers = {
       }
     },
     playersWithOffset: async (_, args) => {
-      const limit = args.limit = args.limit ? args.limit : 10
-      const offset = args.offset ? args.offset * limit : 0
-
-      const players = await Player.query().orderBy('email').offset(offset).limit(limit).eager('[user, team]')
+      const players = await Player.query().orderBy('email').offset(args.offset * args.limit).limit(args.limit).eager('[user, team]')
 
       const total = await Player.query().count().first()
 
