@@ -32,13 +32,19 @@ const rootQuery = `
 
     tourneyType(id: Int!): TourneyType
 
-    players(
+    playersWithCursor(
       #Amount of players to fetch
       first: Int!
 
       #Get records after this cursor
       after: String
     ): Players
+
+    playersWithOffset(
+      limit: Int!
+
+      offset: Int!
+    ): PlayersWithMeta
 
     player(id: Int!): Player
     teams: [Team]

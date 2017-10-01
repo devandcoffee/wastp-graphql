@@ -5,6 +5,11 @@ const Player = `
     pageInfo: PageInfo!
   }
 
+  type PlayersWithMeta {
+    players: [Player]
+    metaInfo: MetaInfo
+  }
+
   type PlayerEdge {
     cursor: String!
     node: Player
