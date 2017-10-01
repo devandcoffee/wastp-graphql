@@ -57,7 +57,7 @@ const rootQuery = `
     deleteTourney(id: Int!): Tourney
     createPlayer(player: PlayerMutation): Player
     updatePlayer(id: Int!, player: PlayerMutation): Player
-    updatePlayerStatus(id: Int!, status: String): Player
+    updatePlayerStatus(id: Int!, status: Status): Player
     updatePlayerStats(id: Int!, player: EditPlayerStats): Player
     deletePlayer(id: Int!): Player
     createTeam(team: NewTeam): Team
