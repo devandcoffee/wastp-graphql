@@ -5,7 +5,7 @@ const { Unauthorized, Forbidden, NotFound, BadRequest } = require('../utils/erro
 
 const playerResolvers = {
   Query: {
-    players: async (_, args) => {
+    playersWithCursor: async (_, args) => {
       let cursor = args.after ? Buffer.from(args.after, 'base64').toString('ascii') : 'a'
       let limit = args.first ? args.first : 10
 
@@ -33,13 +33,28 @@ const playerResolvers = {
           hasNextPage = true
         }
       }
-
       return {
         totalCount: total.count,
         edges,
         pageInfo: {
           endCursor,
           hasNextPage
+        }
+      }
+    },
+    playersWithOffset: async (_, args) => {
+      const limit = args.limit = args.limit ? args.limit : 10
+      const offset = args.offset ? args.offset * limit : 0
+
+      const players = await Player.query().orderBy('email').offset(offset).limit(limit).eager('[user, team]')
+
+      const total = await Player.query().count().first()
+
+      return {
+        players,
+        metaInfo: {
+          totalCount: total.count,
+          currentPage: args.offset
         }
       }
     },
