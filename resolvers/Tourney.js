@@ -42,10 +42,7 @@ const tourneyResolvers = {
       }
     },
     tourneysWithOffset: async (_, args) => {
-      const limit = args.limit = args.limit ? args.limit : 10
-      const offset = args.offset ? args.offset * limit : 0
-
-      const tourneys = await Tourney.query().offset(offset).limit(limit).eager('[tourney_type, user, teams]')
+      const tourneys = await Tourney.query().orderBy('name').offset(args.offset * args.limit).limit(args.limit).eager('[tourney_type, user, teams]')
 
       const total = await Tourney.query().count().first()
 
@@ -53,7 +50,7 @@ const tourneyResolvers = {
         tourneys,
         metaInfo: {
           totalCount: total.count,
-          currentPage: offset
+          currentPage: args.offset
         }
       }
     },
