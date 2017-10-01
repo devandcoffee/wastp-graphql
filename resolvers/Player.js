@@ -1,7 +1,7 @@
 const Player = require('../models/Player')
 const Team = require('../models/Team')
-const Tourney = require ('../models/Tourney')
-const { Unauthorized, Forbidden, NotFound, BadRequest } = require('../utils/errors')
+const Tourney = require('../models/Tourney')
+const { Status, Unauthorized, Forbidden, NotFound, BadRequest } = require('../utils')
 
 const playerResolvers = {
   Query: {
@@ -115,8 +115,7 @@ const playerResolvers = {
       if (context.user) {
         const player = await Player.query().eager('[user, team]').findById(args.id)
         if (player) {
-          //TODO: Player has to be accepted in the team so status must be `in`.
-          if (player.team && player.team.tourney_id && player.status) {
+          if (player.team && player.team.tourney_id && player.status === Status.ACCEPTED) {
               const tourney = await Tourney.query().eager('[user]').findById(player.team.tourney_id)
               if (context.user.id === tourney.user.id){
                 return Player.query().eager('[user, team]').findById(args.id).patchAndFetchById(args.id, args.player)

@@ -8,6 +8,12 @@ const CommonTypes = `
     totalCount: Int
     currentPage: Int
   }
+
+  enum Status {
+    ACCEPTED
+    PENDING
+    REJECTED
+  }
 `
 
 module.exports = CommonTypes

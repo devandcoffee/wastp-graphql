@@ -1,4 +1,5 @@
 const casual = require('casual')
+const { Status } = require('../../utils')
 
 exports.seed = function(knex, Promise) {
   return knex('players').del().then(function () {
@@ -7,7 +8,7 @@ exports.seed = function(knex, Promise) {
         user_id: casual.integer(1,10),
         team_id: casual.integer(1,20),
         email: casual.email,
-        status: casual.word,
+        status: casual.random_value(Status),
         goals: casual.integer(0,30),
         wins: casual.integer(0,20),
         loses: casual.integer(0,20),

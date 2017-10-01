@@ -20,7 +20,7 @@ const Player = `
     user: User
     team: Team
     email: String
-    status: String
+    status: Status
     goals: Int
     wins: Int
     loses: Int
