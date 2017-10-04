@@ -63,7 +63,7 @@ const playerResolvers = {
         let player = args.player
         player.user_id = context.user.id
         if (player.team_id) {
-          const team = await Team.query().eager('[user]').findById(player.team_id)
+          const team = await Team.query().findById(player.team_id)
           if (team) {
               return Player.query().eager('[user, team]').insert(args.player)
           }
@@ -95,8 +95,8 @@ const playerResolvers = {
     },
     updatePlayerStatus: async (_, args, context) => {
       if (context.user) {
-        const player = await Player.query().eager('[user]').findById(args.id)
-        if (player){
+        const player = await Player.query().findById(args.id)
+        if (player) {
           if (player.team_id) {
             const team = await Team.query().eager('[user]').findById(player.team_id)
             if (context.user.id === team.user_id) {
@@ -113,11 +113,11 @@ const playerResolvers = {
     },
     updatePlayerStats: async (_, args, context) => {
       if (context.user) {
-        const player = await Player.query().eager('[user, team]').findById(args.id)
+        const player = await Player.query().eager('[team]').findById(args.id)
         if (player) {
           if (player.team && player.team.tourney_id && player.status === Status.ACCEPTED) {
               const tourney = await Tourney.query().eager('[user]').findById(player.team.tourney_id)
-              if (context.user.id === tourney.user.id){
+              if (context.user.id === tourney.user.id) {
                 return Player.query().eager('[user, team]').findById(args.id).patchAndFetchById(args.id, args.player)
               }
               throw new Error(Forbidden)

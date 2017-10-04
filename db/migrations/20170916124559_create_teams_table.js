@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('description')
     table.integer('playersQty')
     table.string('shield')
+    table.string('status')
     table.integer('wins')
     table.integer('loses')
     table.integer('ties')
