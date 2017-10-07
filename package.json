@@ -19,6 +19,7 @@
     "body-parser": "^1.17.2",
     "casual": "^1.5.17",
     "express": "^4.15.4",
+    "firebase-admin": "^5.4.1",
     "graphql": "^0.11.2",
     "graphql-tools": "^1.2.2",
     "jwt-simple": "^0.5.1",

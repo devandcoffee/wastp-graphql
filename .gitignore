@@ -97,3 +97,6 @@ Temporary Items
 
 # npm v5
 package-lock.json
+
+# firebase
+serviceAccountKey.json

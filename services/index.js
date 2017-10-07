@@ -28,7 +28,7 @@ function decodeToken(token) {
 
       resolve(payload.sub)
     }
-    catch(err) {
+    catch (err) {
       reject({
         status: 500,
         message: `Invalid Token`
@@ -47,15 +47,16 @@ function checkPassword(password, hash) {
   return bcrypt.compare(password, hash).then((res) => res)
 }
 
-function authenticate(req) {
+function authenticate(admin, req) {
   if (req.headers.authorization) {
     const token = req.headers.authorization.split(' ')[1]
-
-    return decodeToken(token).then((id) => {
-        return User.query().findById(id)
-    }).catch((err) => {
-      return err
-    })
+    return admin.auth().verifyIdToken(token)
+      .then(function (decodedToken) {
+        var uid = decodedToken.uid;
+        return uid;
+      }).catch(function (error) {
+        return error
+      })
   }
 }
 
