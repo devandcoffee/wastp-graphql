@@ -20,7 +20,7 @@ admin.initializeApp({
 const buildOptions = async (req, res) => {
   const user = await services.authenticate(admin, req)
   return {
-    context: !user.Error ? { user } : {},
+    context: user && !user.Error ? { user } : {},
     schema,
     formatError: (error) => {
       return {
