@@ -51,7 +51,7 @@ function authenticate(admin, req) {
   if (req.headers.authorization) {
     const token = req.headers.authorization.split(' ')[1]
     return admin.auth().verifyIdToken(token)
-      .then(function (decodedToken) {
+      .then((decodedToken) => {
         var uid = decodedToken.uid;
         return uid;
       }).catch(function (error) {
