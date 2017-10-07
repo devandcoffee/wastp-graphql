@@ -110,12 +110,9 @@ const teamResolvers = {
       throw new Error(Unauthorized)
     },
     updateTeamStats: async (_, args, context) => {
-      console.log('TEAM STATS')
       if (context.user) {
         const team = await Team.query().eager('[tourney]').findById(args.id)
         if (team) {
-          console.log(team.tourney_id, 'tourney ID')
-          console.log(team.tourney, 'team.tourney')
           if (team.tourney && team.status === Status.ACCEPTED) {
             const tourney = await Tourney.query().eager('[user]').findById(team.tourney_id)
             if (context.user.id === tourney.user_id) {
