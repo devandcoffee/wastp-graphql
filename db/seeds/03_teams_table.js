@@ -1,4 +1,5 @@
 const casual = require('casual')
+const { Status } = require('../../utils')
 
 exports.seed = function(knex, Promise) {
   return knex('teams').del().then(function () {
@@ -10,6 +11,7 @@ exports.seed = function(knex, Promise) {
             description: casual.sentences(2),
             playersQty: casual.integer(0,30),
             shield: casual.word,
+            status: casual.random_value(Status),
             wins: casual.integer(0,10),
             loses: casual.integer(0,10),
             ties: casual.integer(0,10),
