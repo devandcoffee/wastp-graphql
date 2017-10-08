@@ -52,8 +52,11 @@ function authenticate(admin, req) {
     const token = req.headers.authorization.split(' ')[1]
     return admin.auth().verifyIdToken(token)
       .then((decodedToken) => {
-        var uid = decodedToken.uid;
-        return uid;
+        const user = {
+          email: decodedToken.email,
+          uid: decodedToken.uid
+        }
+        return user;
       }).catch(function (error) {
         return error
       })

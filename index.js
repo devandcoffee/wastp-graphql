@@ -10,7 +10,7 @@ require('./db/setup')
 
 let app = express()
 
-var serviceAccount = require('./serviceAccountKey.json')
+const serviceAccount = require('./serviceAccountKey.json')
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
