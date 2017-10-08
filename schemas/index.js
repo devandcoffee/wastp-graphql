@@ -68,9 +68,8 @@ const rootQuery = `
     createTourney(tourney: NewTourney): Tourney
     updateTourney(id: Int!, tourney: EditTourney): Tourney
     deleteTourney(id: Int!): Tourney
-    createPlayer(player: PlayerMutation): Player
-    updatePlayer(id: Int!, player: PlayerMutation): Player
-    updatePlayerStatus(id: Int!, status: Status): Player
+    createPlayer(player: NewPlayer): Player
+    updatePlayer(id: Int!, player: EditPlayer): Player
     updatePlayerStats(id: Int!, player: EditPlayerStats): Player
     deletePlayer(id: Int!): Player
     createTeam(team: TeamMutation): Team
