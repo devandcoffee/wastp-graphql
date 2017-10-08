@@ -22,14 +22,14 @@ const Team = `
     players: [Player]
     name: String!
     description: String
-    playersQty: Int
+    players_qty: Int
     shield: String
     status: Status
     wins: Int
     loses: Int
     ties: Int
-    goalsInFavor: Int
-    goalsAgainst: Int
+    goals_in_favor: Int
+    goals_against: Int
     status: String
     created_at: String
     updated_at: String
@@ -45,8 +45,8 @@ const Team = `
     wins: Int
     loses: Int
     ties: Int
-    goalsInFavor: Int
-    goalsAgainst: Int
+    goals_in_favor: Int
+    goals_against: Int
   }
 `
 
