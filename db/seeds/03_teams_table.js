@@ -9,14 +9,14 @@ exports.seed = function(knex, Promise) {
             tourney_id: casual.integer(1,10),
             name: casual.name,
             description: casual.sentences(2),
-            playersQty: casual.integer(0,30),
+            players_qty: casual.integer(0,30),
             shield: casual.word,
             status: casual.random_value(Status),
             wins: casual.integer(0,10),
             loses: casual.integer(0,10),
             ties: casual.integer(0,10),
-            goalsInFavor: casual.integer(0,20),
-            goalsAgainst: casual.integer(0,20),
+            goals_in_favor: casual.integer(0,20),
+            goals_against: casual.integer(0,20),
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
         }])
