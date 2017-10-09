@@ -20,6 +20,8 @@ const Player = `
     user: User
     team: Team
     email: String
+    first_name: String
+    last_name: String
     status: Status
     goals: Int
     wins: Int
@@ -27,11 +29,23 @@ const Player = `
     ties: Int
     created_at: String
     updated_at: String
+    updated_by: Int
   }
 
-  input PlayerMutation {
-    team_id: Int
+  input NewPlayer {
+    team_id: Int!
+    user_id: Int
     email: String
+    first_name: String
+    last_name: String
+  }
+
+  input EditPlayer {
+    user_id: Int
+    email: String
+    first_name: String
+    last_name: String
+    status: Status
   }
 
   input EditPlayerStats {

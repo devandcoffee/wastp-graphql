@@ -8,6 +8,8 @@ exports.seed = function(knex, Promise) {
         user_id: casual.integer(1,10),
         team_id: casual.integer(1,20),
         email: casual.email,
+        first_name: casual.first_name,
+        last_name: casual.last_name,
         status: casual.random_value(Status),
         goals: casual.integer(0,30),
         wins: casual.integer(0,20),

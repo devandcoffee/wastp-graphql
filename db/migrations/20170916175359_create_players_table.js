@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.integer('user_id').references('users.id').unsigned()
     table.integer('team_id').references('teams.id').unsigned()
     table.string('email')
+    table.string('first_name')
+    table.string('last_name')
     table.string('status')
     table.integer('goals')
     table.integer('wins')
@@ -12,6 +14,7 @@ exports.up = function(knex, Promise) {
     table.integer('ties')
     table.timestamps(true)
     table.timestamp('deleted_at')
+    table.integer('updated_by')
   })
 };
 

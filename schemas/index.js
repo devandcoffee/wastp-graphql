@@ -47,7 +47,20 @@ const rootQuery = `
     ): PlayersWithMeta
 
     player(id: Int!): Player
-    teams: [Team]
+
+    teamsWithCursor (
+      #Amount of teams to fetch
+      first: Int!
+
+      #Get records after this cursor
+      after: String
+    ): Teams
+
+    teamsWithOffset (
+      limit: Int!
+      offset: Int!
+    ): TeamsWithMeta
+
     team(id: Int!): Team
   }
 
@@ -55,13 +68,14 @@ const rootQuery = `
     createTourney(tourney: NewTourney): Tourney
     updateTourney(id: Int!, tourney: EditTourney): Tourney
     deleteTourney(id: Int!): Tourney
-    createPlayer(player: PlayerMutation): Player
-    updatePlayer(id: Int!, player: PlayerMutation): Player
-    updatePlayerStatus(id: Int!, status: Status): Player
+    createPlayer(player: NewPlayer): Player
+    updatePlayer(id: Int!, player: EditPlayer): Player
     updatePlayerStats(id: Int!, player: EditPlayerStats): Player
     deletePlayer(id: Int!): Player
-    createTeam(team: NewTeam): Team
-    updateTeam(id: Int!, team: EditTeam): Team
+    createTeam(team: TeamMutation): Team
+    updateTeam(id: Int!, team: TeamMutation): Team
+    updateTeamStatus(id: Int!, status: Status): Team
+    updateTeamStats(id: Int!, team: EditTeamStats): Team
     deleteTeam(id: Int!): Team
     signUp(user: NewUser, authData: AuthData): User
     signIn(authData: AuthData): SignInPayload

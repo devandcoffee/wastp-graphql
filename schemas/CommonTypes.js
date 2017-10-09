@@ -10,9 +10,9 @@ const CommonTypes = `
   }
 
   enum Status {
-    ACCEPTED
-    PENDING
-    REJECTED
+    accepted
+    pending
+    rejected
   }
 `
 

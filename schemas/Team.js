@@ -1,4 +1,20 @@
 const Team = `
+  type Teams {
+    totalCount: Int
+    edges: [TeamEdge]
+    pageInfo: PageInfo!
+  }
+
+  type TeamsWithMeta {
+    teams: [Team]
+    metaInfo: MetaInfo
+  }
+
+  type TeamEdge {
+    cursor: String!
+    node: Team
+  }
+
   type Team {
     id: ID!
     user: User
@@ -6,43 +22,31 @@ const Team = `
     players: [Player]
     name: String!
     description: String
-    playersQty: Int
+    players_qty: Int
     shield: String
+    status: Status
     wins: Int
     loses: Int
     ties: Int
-    goalsInFavor: Int
-    goalsAgainst: Int
+    goals_in_favor: Int
+    goals_against: Int
     status: String
     created_at: String
     updated_at: String
   }
 
-  input NewTeam {
+  input TeamMutation {
     name: String!
-    user_id: Int!
     description: String
-    playersQty: String,
     shield: String
-    wins: Int
-    loses: Int
-    ties: Int
-    goalsInFavor: Int
-    goalsAgainst: Int
-    status: String
   }
 
-  input EditTeam {
-    name: String
-    description: String
-    playersQty: String,
-    shield: String
+  input EditTeamStats {
     wins: Int
     loses: Int
     ties: Int
-    goalsInFavor: Int
-    goalsAgainst: Int
-    status: String
+    goals_in_favor: Int
+    goals_against: Int
   }
 `
 
