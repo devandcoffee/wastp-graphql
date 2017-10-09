@@ -23,10 +23,8 @@ const Player = `
     first_name: String
     last_name: String
     status: Status
-    goals: Int
-    wins: Int
-    loses: Int
-    ties: Int
+    scores: Int
+    games: Int
     created_at: String
     updated_at: String
     updated_by: Int
@@ -34,25 +32,23 @@ const Player = `
 
   input NewPlayer {
     team_id: Int!
+    first_name: String!
+    last_name: String!
     user_id: Int
     email: String
-    first_name: String
-    last_name: String
   }
 
   input EditPlayer {
-    user_id: Int
-    email: String
     first_name: String
     last_name: String
+    user_id: Int
+    email: String
     status: Status
   }
 
   input EditPlayerStats {
-    goals: Int
-    wins: Int
-    loses: Int
-    ties: Int
+    scores: Int
+    games: Int
   }
 `
 

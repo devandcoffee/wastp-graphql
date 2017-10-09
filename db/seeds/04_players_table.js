@@ -11,10 +11,8 @@ exports.seed = function(knex, Promise) {
         first_name: casual.first_name,
         last_name: casual.last_name,
         status: casual.random_value(Status),
-        goals: casual.integer(0,30),
-        wins: casual.integer(0,20),
-        loses: casual.integer(0,20),
-        ties: casual.integer(0,20),
+        scores: casual.integer(0,30),
+        games: casual.integer(0,20),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       }])
