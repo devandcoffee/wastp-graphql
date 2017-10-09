@@ -1,26 +1,25 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const admin = require('firebase-admin')
 const schema = require('./schemas')
 const services = require('./services')
 const config = require('./config')
-const admin = require('firebase-admin')
+const serviceAccount = require('./serviceAccountKey.json')
 
 require('./db/setup')
 
 let app = express()
 
-const serviceAccount = require('./serviceAccountKey.json')
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://wastp-5a602.firebaseio.com'
+  databaseURL: config.firebaseUri
 })
 
 const buildOptions = async (req, res) => {
   const user = await services.authenticate(admin, req)
   return {
-    context: user && !user.Error ? { user } : {},
+    context: user && !user.errorInfo ? { user } : {},
     schema,
     formatError: (error) => {
       return {
@@ -40,7 +39,8 @@ app.use(
 app.use(
   '/graphiql',
   graphiqlExpress({
-    endpointURL: '/graphql'
+    endpointURL: '/graphql',
+    //passHeader: `'Authorization': 'bearer ${config.token}'`,
   })
 )
 

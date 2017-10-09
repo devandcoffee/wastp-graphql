@@ -77,8 +77,7 @@ const rootQuery = `
     updateTeamStatus(id: Int!, status: Status): Team
     updateTeamStats(id: Int!, team: EditTeamStats): Team
     deleteTeam(id: Int!): Team
-    signUp(user: NewUser, authData: AuthData): User
-    signIn(authData: AuthData): SignInPayload
+    signUp(user: NewUser): User
   }
 `
 

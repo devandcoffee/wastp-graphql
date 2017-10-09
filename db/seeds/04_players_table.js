@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
   return knex('players').del().then(function () {
     const promises = Array(60).fill().map(() => {
       return knex('players').insert([{
-        user_id: casual.integer(1,10),
+        user_id: 1,
         team_id: casual.integer(1,20),
         email: casual.email,
         first_name: casual.first_name,

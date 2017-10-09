@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
         start_date: casual.date('YYYY-MM-DD'),
         amount_teams: casual.integer(10, 20),
         tourney_type_id: casual.integer(1, 2),
-        user_id: casual.integer(1, 10),
+        user_id: 1,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       }])
