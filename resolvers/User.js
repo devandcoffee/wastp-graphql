@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const services = require('../services')
 const { Unauthorized, BadRequest } = require('../utils')
 
 const userResolvers = {
@@ -17,8 +18,18 @@ const userResolvers = {
     }
   },
   Mutation: {
-    signUp: (_, args) => {
-      if (args.user) return User.query().insert(args.user)
+    signUp: async (_, args) => {
+      if (args.user) {
+        try {
+          const userRecord = await services.signUp(args.user)
+          return User.query().insert({
+            uid: userRecord.uid,
+            email: userRecord.email
+          })
+        } catch (error) {
+          return error
+        }
+      }
       throw new Error(BadRequest)
     }
   }

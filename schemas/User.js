@@ -5,12 +5,14 @@ const User = `
     teams: [Team]
     players: [Player]
     uid: String
+    email: String
     created_at: String
     updated_at: String
   }
 
   input NewUser {
-    uid: String!
+    email: String!
+    password: String!
   }
 `
 

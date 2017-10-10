@@ -1,23 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
-const admin = require('firebase-admin')
 const schema = require('./schemas')
 const services = require('./services')
 const config = require('./config')
-const serviceAccount = require('./serviceAccountKey.json')
 
 require('./db/setup')
 
 let app = express()
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: config.firebaseUri
-})
-
 const buildOptions = async (req, res) => {
-  const user = await services.authenticate(admin, req)
+  const user = await services.authenticate(req)
   return {
     context: user && !user.errorInfo ? { user } : {},
     schema,
