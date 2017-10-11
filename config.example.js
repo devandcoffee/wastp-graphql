@@ -10,4 +10,4 @@ const config = {
   token: '',
 }
 
-module.exports = config;
+module.exports = config

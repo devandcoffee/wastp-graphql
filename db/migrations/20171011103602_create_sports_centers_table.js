@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
     table.timestamps(true)
     table.timestamp('deleted_at')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('sports_centers')
-};
+}

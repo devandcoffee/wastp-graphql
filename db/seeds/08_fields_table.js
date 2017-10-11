@@ -5,6 +5,6 @@ exports.seed = function(knex, Promise) {
         {name: 'Cancha uno', description:'Futbol, sintetico', sports_center_id: 1, sport_id: 1},
         {name: 'Cancha dos', description:'Futbol, natural', sports_center_id: 1, sport_id: 1},
         {name: 'Cancha uno', description:'Volley', sports_center_id: 1, sport_id: 2},
-      ]);
-    });
-};
+      ])
+    })
+}

@@ -5,6 +5,6 @@ exports.seed = function(knex, Promise) {
         {tourney_id: 1, sports_center_id: 1},
         {tourney_id: 1, sports_center_id: 2},
         {tourney_id: 2, sports_center_id: 1}
-      ]);
-    });
-};
+      ])
+    })
+}

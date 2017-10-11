@@ -6,9 +6,11 @@ exports.up = function(knex, Promise) {
     table.string('description')
     table.integer('sports_center_id').references('sports_centers.id').unsigned()
     table.integer('sport_id').references('sports.id').unsigned
+    table.timestamps(true)
+    table.timestamp('deleted_at')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('fields')
-};
+}

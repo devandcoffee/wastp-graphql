@@ -2,11 +2,11 @@ const { Model, QueryBuilder } = require('objection')
 
 class SoftDeleteQueryBuilder extends QueryBuilder {
   constructor(modelClass) {
-    super(modelClass);
+    super(modelClass)
 
     this.onBuild(builder => {
       if (!builder.context().withTrashed) {
-        builder.whereNull('deleted_at');
+        builder.whereNull('deleted_at')
       }
     })
   }
@@ -17,7 +17,7 @@ class SoftDeleteQueryBuilder extends QueryBuilder {
   }
 
   softDelete() {
-    return this.patch({ deleted_at: new Date().toISOString() });
+    return this.patch({ deleted_at: new Date().toISOString() })
   }
 }
 
@@ -36,7 +36,7 @@ class CustomModel extends Model {
 
 }
 
-CustomModel.QueryBuilder = SoftDeleteQueryBuilder;
-CustomModel.RelatedQueryBuilder = SoftDeleteQueryBuilder;
+CustomModel.QueryBuilder = SoftDeleteQueryBuilder
+CustomModel.RelatedQueryBuilder = SoftDeleteQueryBuilder
 
 module.exports = CustomModel

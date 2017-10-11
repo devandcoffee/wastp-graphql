@@ -6,8 +6,8 @@ exports.up = function(knex, Promise) {
     table.string('description')
     table.integer('players_by_team')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('sports')
-};
+}
