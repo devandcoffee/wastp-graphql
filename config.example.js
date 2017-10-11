@@ -6,7 +6,8 @@ const config = {
     password: '',
     database: ''
   },
-  SECRET_TOKEN: ''
+  firebaseUri: '',
+  token: '',
 }
 
 module.exports = config;

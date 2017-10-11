@@ -12,7 +12,7 @@ let app = express()
 const buildOptions = async (req, res) => {
   const user = await services.authenticate(req)
   return {
-    context: { user },
+    context: user && !user.errorInfo ? { user } : {},
     schema,
     formatError: (error) => {
       return {
@@ -32,7 +32,8 @@ app.use(
 app.use(
   '/graphiql',
   graphiqlExpress({
-    endpointURL: '/graphql'
+    endpointURL: '/graphql',
+    //passHeader: `'Authorization': 'bearer ${config.token}'`,
   })
 )
 
