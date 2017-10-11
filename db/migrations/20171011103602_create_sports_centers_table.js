@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.string('name')
     table.string('address')
     table.string('phone')
+    table.timestamps(true)
+    table.timestamp('deleted_at')
   })
 };
 

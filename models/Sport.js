@@ -15,6 +15,14 @@ class Sport extends Model {
           from: 'sports.id',
           to: 'tourneys.sport_id'
         }
+      },
+      fields: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/Field'),
+        join: {
+          from: 'sports.id',
+          to: 'fields.sport_id'
+        }
       }
     }
   }

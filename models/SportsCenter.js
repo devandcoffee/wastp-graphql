@@ -15,6 +15,14 @@ const SportsCenter extends Model {
           from: 'sports_centers.id',
           to: 'tourneys_centers.sports_center_id'
         }
+      },
+      fields: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/Field'),
+        join: {
+          from: 'sports_centers.id',
+          to: 'fields.sports_center_id'
+        }
       }
     }
   }
