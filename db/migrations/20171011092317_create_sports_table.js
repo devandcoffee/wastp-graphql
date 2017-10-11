@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary().unsigned()
     table.string('name')
     table.string('description')
-    table.integer('playersByTeam')
+    table.integer('players_by_team')
   })
 };
 
