@@ -15,6 +15,14 @@ class Fixture extends Model {
           from: 'fixtures.tourney_id',
           to: 'tourneys.id'
         }
+      },
+      games: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/Game'),
+        join: {
+          from: 'fixtures.id',
+          to: 'games.fixture_id'
+        }
       }
     }
   }
