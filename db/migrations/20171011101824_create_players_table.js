@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('players', (table) => {
     table.increments('id').primary().unsigned()
@@ -14,7 +13,7 @@ exports.up = function(knex, Promise) {
     table.timestamp('deleted_at')
     table.integer('updated_by')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('players')

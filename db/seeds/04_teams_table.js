@@ -2,7 +2,7 @@ const casual = require('casual')
 const { Status } = require('../../utils')
 
 exports.seed = function(knex, Promise) {
-  return knex('teams').del().then(function () {
+  return knex('teams').del().then(() => {
       const promises = Array(20).fill().map(() => {
         return knex('teams').insert([{
             user_id: 1,
@@ -22,5 +22,5 @@ exports.seed = function(knex, Promise) {
         }])
       })
       return Promise.all(promises)
-    });
-};
+    })
+}

@@ -25,6 +25,22 @@ class Tourney extends Model {
           to: 'tourneys_types.id'
         }
       },
+      sports: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: path.join(__dirname, '/Sport'),
+        join: {
+          from: 'tourneys.sport_id',
+          to: 'sports.id'
+        }
+      },
+      tourneysCenter: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/TourneysCenter'),
+        join: {
+          from: 'tourneys.id',
+          to: 'tourneys_centers.tourney_id'
+        }
+      },
       teams: {
         relation: Model.HasManyRelation,
         modelClass: path.join(__dirname, '/Team'),
