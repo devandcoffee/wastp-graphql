@@ -23,6 +23,14 @@ class Sport extends Model {
           from: 'sports.id',
           to: 'fields.sport_id'
         }
+      },
+      incidence_types: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/IncidenceType'),
+        join: {
+          from: 'sports.id',
+          to: 'incidence_types.sport_id'
+        }
       }
     }
   }

@@ -24,6 +24,14 @@ class Player extends Model {
           from: 'players.team_id',
           to: 'teams.id'
         }
+      },
+      incidences: {
+        relation: Model.HasManyRelation,
+        modelClass: path.join(__dirname, '/Incidence'),
+        join: {
+          from: 'players.id',
+          to: 'incidences.player_id'
+        }
       }
     }
   }

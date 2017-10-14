@@ -9,6 +9,8 @@ exports.up = function(knex, Promise) {
     table.integer('local_score')
     table.integer('visitant_score')
     table.timestamp('date')
+    table.timestamps(true)
+    table.timestamp('deleted_at')
   })
 }
 
