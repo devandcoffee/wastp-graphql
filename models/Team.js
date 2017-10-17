@@ -2,7 +2,6 @@ const Model = require('./CustomModel')
 const path = require('path')
 
 class Team extends Model {
-
   static get tableName() {
     return 'teams'
   }

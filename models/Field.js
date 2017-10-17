@@ -15,10 +15,10 @@ class Field extends Model {
           from: 'fields.sports_center_id',
           to: 'sports_centers.id'
         }
-      }
+      },
       sport: {
         relation: Model.BelongsToOneRelation,
-        modelClass: path.join(__dirname, '/Sports'),
+        modelClass: path.join(__dirname, '/Sport'),
         join: {
           from: 'fields.sport_id',
           to: 'sports.id'
@@ -35,3 +35,5 @@ class Field extends Model {
     }
   }
 }
+
+module.exports = Field

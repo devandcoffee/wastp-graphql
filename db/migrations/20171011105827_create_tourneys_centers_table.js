@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('tourneys_centers', (table) => {
     table.integer('tourney_id').references('tourneys.id').unsigned()

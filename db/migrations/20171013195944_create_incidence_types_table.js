@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('incidence_types', (table) => {
     table.increments('id').primary().unsigned()

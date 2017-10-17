@@ -27,3 +27,5 @@ class Fixture extends Model {
     }
   }
 }
+
+module.exports = Fixture

@@ -27,3 +27,5 @@ class IncidenceType extends Model {
     }
   }
 }
+
+module.exports = IncidenceType

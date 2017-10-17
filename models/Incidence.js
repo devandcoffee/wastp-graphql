@@ -1,4 +1,4 @@
-const Model = require('/CustomModel')
+const Model = require('./CustomModel')
 const path = require('path')
 
 class Incidence extends Model {
@@ -27,3 +27,5 @@ class Incidence extends Model {
     }
   }
 }
+
+module.exports = Incidence

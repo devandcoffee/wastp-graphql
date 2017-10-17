@@ -2,7 +2,6 @@ const Model = require('./CustomModel')
 const path = require('path')
 
 class Tourney extends Model {
-
   static get tableName() {
     return 'tourneys'
   }
@@ -25,7 +24,7 @@ class Tourney extends Model {
           to: 'tourneys_types.id'
         }
       },
-      sports: {
+      sport: {
         relation: Model.BelongsToOneRelation,
         modelClass: path.join(__dirname, '/Sport'),
         join: {
@@ -51,7 +50,7 @@ class Tourney extends Model {
       },
       fixtures: {
         relation: Model.HasManyRelation,
-        modelClass: path.join(__dirname, '/Fixture')
+        modelClass: path.join(__dirname, '/Fixture'),
         join: {
           from: 'tourneys.id',
           to: 'fixtures.tourney_id'

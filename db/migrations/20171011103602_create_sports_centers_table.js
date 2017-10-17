@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('sports_centers', (table) => {
     table.increments('id').primary().unsigned()

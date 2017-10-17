@@ -35,3 +35,5 @@ class Sport extends Model {
     }
   }
 }
+
+module.exports = Sport

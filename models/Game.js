@@ -1,4 +1,4 @@
-const Model = require('/CustomModel')
+const Model = require('./CustomModel')
 const path = require('path')
 
 class Game extends Model {
@@ -12,8 +12,8 @@ class Game extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: path.join(__dirname, '/Fixture'),
         join: {
-          from: 'games.tourney_id',
-          to: 'tourneys.id'
+          from: 'games.fixture_id',
+          to: 'fixtures.id'
         }
       },
       field: {
@@ -39,7 +39,9 @@ class Game extends Model {
           from: 'games.visitant_id',
           to: 'teams.id'
         }
-      },
+      }
     }
   }
 }
+
+module.exports = Game
