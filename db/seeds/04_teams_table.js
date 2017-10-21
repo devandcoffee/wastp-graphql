@@ -1,5 +1,5 @@
 const casual = require('casual')
-const { Status } = require('../../utils')
+const { Status } = require('../../data-helper')
 
 exports.seed = function(knex, Promise) {
   return knex('teams').del().then(() => {

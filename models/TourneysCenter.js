@@ -1,7 +1,7 @@
 const Model = require('./CustomModel')
 const path = require('path')
 
-const TourneysCenter extends Model {
+class TourneysCenter extends Model {
   static get tableName() {
     return 'tourneys_centers'
   }
@@ -27,3 +27,5 @@ const TourneysCenter extends Model {
     }
   }
 }
+
+module.exports = TourneysCenter

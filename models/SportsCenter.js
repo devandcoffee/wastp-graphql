@@ -27,3 +27,5 @@ const SportsCenter extends Model {
     }
   }
 }
+
+module.exports = SportsCenter

@@ -2,7 +2,8 @@ const Player = require('../models/Player')
 const User = require('../models/User')
 const Team = require('../models/Team')
 const Tourney = require('../models/Tourney')
-const { Status, Unauthorized, Forbidden, NotFound, BadRequest } = require('../utils')
+const { Status } = require('../data-helper')
+const { Unauthorized, Forbidden, NotFound, BadRequest } = require('../utils')
 
 const playerResolvers = {
   Query: {
