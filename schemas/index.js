@@ -4,6 +4,8 @@ const Tourney = require('./Tourney')
 const User = require('./User')
 const Player = require('./Player')
 const Team = require('./Team')
+const Fixture = require('./Fixture')
+const Game = require('./Game')
 const CommonTypes = require('./CommonTypes')
 
 const rootQuery = `
@@ -62,6 +64,8 @@ const rootQuery = `
     ): TeamsWithMeta
 
     team(id: Int!): Team
+
+    tourneySchedule(id: Int!): [Fixture]
   }
 
   type Mutation {
@@ -78,11 +82,13 @@ const rootQuery = `
     updateTeamStats(id: Int!, team: EditTeamStats): Team
     deleteTeam(id: Int!): Team
     signUp(user: NewUser): User
+    createTourneySchedule(id: Int!): [Fixture]
+    deleteTourneySchedule(id: Int!): [Fixture]
   }
 `
 
 const schema = makeExecutableSchema({
-  typeDefs: [rootQuery, Tourney, User, Player, Team, CommonTypes],
+  typeDefs: [rootQuery, Tourney, User, Player, Team, Fixture, Game, CommonTypes],
   resolvers
 })
 

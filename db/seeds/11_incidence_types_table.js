@@ -7,6 +7,6 @@ exports.seed = function(knex, Promise) {
         {sport_id: 1, name: 'tarjeta amarilla'},
         {sport_id: 1, name: 'tarjeta roja'},
         {sport_id: 1, name: 'titular'}
-      ]);
-    });
-};
+      ])
+    })
+}

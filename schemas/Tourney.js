@@ -19,6 +19,7 @@ const Tourney = `
     description: String
     start_date: String
     amount_teams: Int
+    fixtures: [Fixture]
     created_at: String
     updated_at: String
   }
