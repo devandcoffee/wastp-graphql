@@ -62,19 +62,21 @@ const playerResolvers = {
   Mutation: {
     createPlayer: async (_, args, context) => {
       if (context.user) {
-        const team = await Team.query().eager('[user]').findById(args.player.team_id)
+        const team = await Team.query().eager('[user, players]').findById(args.player.team_id)
         if (team) {
-          //Team owner create a player
           if (team.user.id === context.user.id) {
+            //Team owner create a player
             args.player.status = Status.ACCEPTED
+          } else {
+            //User create a player
+            team.players.forEach((player) => {
+              //Check if the user already ask to join in the team
+              if (player.user_id === context.user.id) {
+                throw new Error(BadRequest)
+              }
+            })
           }
-          //Match a player with a valid user
-          if (args.player.user_id) {
-            const user = await User.query().findById(args.player.user_id)
-            if (!user) {
-              throw new Error(NotFound)
-            }
-          }
+          args.player.user_id = context.user.id
           return Player.query().eager('[user, team]').insert(args.player)
         }
         throw new Error(NotFound)
@@ -87,8 +89,9 @@ const playerResolvers = {
         if (player) {
           const team = await Team.query().eager('[user]').findById(player.team_id)
           if (context.user.id === team.user.id) {
-            //Match a player with a valid user
+            //Match a player with a valid user.
             if (args.player.user_id) {
+              //Sync a player with a valid user
               const user = await User.query().findById(args.player.user_id)
               if (!user) {
                 throw new Error(NotFound)
@@ -123,7 +126,7 @@ const playerResolvers = {
     },
     deletePlayer: async (_, args, context) => {
       if (context.user) {
-        const player = await Player.query().eager('[user, team]').findById(args.id)
+        const player = await Player.query().eager('[user]').findById(args.id)
         if (player) {
           if (context.user.id === player.user.id) {
             await Player.query().where('id', args.id).softDelete()

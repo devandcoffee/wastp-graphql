@@ -28,19 +28,23 @@ const Player = `
     created_at: String
     updated_at: String
     updated_by: Int
+    deleted_at: String
   }
 
   input NewPlayer {
     team_id: Int!
     first_name: String!
     last_name: String!
-    user_id: Int
+    email: String
+  }
+
+  input NewTeamPlayer {
+    first_name: String!
+    last_name: String!
     email: String
   }
 
   input EditPlayer {
-    first_name: String
-    last_name: String
     user_id: Int
     email: String
     status: Status

@@ -33,10 +33,19 @@ const Team = `
     status: String
     created_at: String
     updated_at: String
+    deleted_at: String
   }
 
-  input TeamMutation {
+  input NewTeam {
+    tourney_id: Int!
     name: String!
+    players: [NewTeamPlayer!]!
+    description: String
+    shield: String
+  }
+
+  input EditTeam {
+    name: String
     description: String
     shield: String
   }
