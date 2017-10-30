@@ -76,8 +76,8 @@ const rootQuery = `
     updatePlayer(id: Int!, player: EditPlayer): Player
     updatePlayerStats(id: Int!, player: EditPlayerStats): Player
     deletePlayer(id: Int!): Player
-    createTeam(team: TeamMutation): Team
-    updateTeam(id: Int!, team: TeamMutation): Team
+    createTeam(team: NewTeam): Team
+    updateTeam(id: Int!, team: EditTeam): Team
     updateTeamStatus(id: Int!, status: Status): Team
     updateTeamStats(id: Int!, team: EditTeamStats): Team
     deleteTeam(id: Int!): Team
