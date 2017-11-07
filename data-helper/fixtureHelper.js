@@ -1,4 +1,4 @@
-createSchedule = (teams) => {
+const createSchedule = (teams) => {
   const odd = (teams.length % 2) !== 0
   let evenTeams = odd ? teams.length + 1  : teams.length
 
