@@ -1,8 +1,8 @@
-const { Status, TourneyTypes } = require('./const')
-const { createSchedule } = require('./fixtureHelper')
+import { Status, TourneyTypes } from './const';
+import { createSchedule } from './fixtureHelper';
 
-module.exports = {
+export default {
   Status,
   TourneyTypes,
-  createSchedule
-}
+  createSchedule,
+};
