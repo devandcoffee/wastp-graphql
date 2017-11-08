@@ -1,9 +1,9 @@
-const Model = require('./CustomModel')
-const path = require('path')
+import path from 'path';
+import Model from './CustomModel';
 
 class Team extends Model {
   static get tableName() {
-    return 'teams'
+    return 'teams';
   }
 
   static get relationMappings() {
@@ -13,43 +13,43 @@ class Team extends Model {
         modelClass: path.join(__dirname, '/User'),
         join: {
           from: 'teams.user_id',
-          to: 'users.id'
-        }
+          to: 'users.id',
+        },
       },
       tourney: {
         relation: Model.BelongsToOneRelation,
         modelClass: path.join(__dirname, '/Tourney'),
         join: {
           from: 'teams.tourney_id',
-          to: 'tourneys.id'
-        }
+          to: 'tourneys.id',
+        },
       },
       players: {
         relation: Model.HasManyRelation,
-        modelClass:path.join(__dirname, '/Player'),
+        modelClass: path.join(__dirname, '/Player'),
         join: {
           from: 'teams.id',
-          to: 'players.team_id'
-        }
+          to: 'players.team_id',
+        },
       },
       local_game: {
         relation: Model.HasManyRelation,
         modelClass: path.join(__dirname, '/Game'),
         join: {
           from: 'teams.id',
-          to: 'games.local_id'
-        }
+          to: 'games.local_id',
+        },
       },
       visitant_game: {
         relation: Model.HasManyRelation,
         modelClass: path.join(__dirname, '/Game'),
         join: {
           from: 'teams.id',
-          to: 'games.visitant_id'
-        }
-      }
-    }
+          to: 'games.visitant_id',
+        },
+      },
+    };
   }
 }
 
-module.exports = Team
+export default Team;
