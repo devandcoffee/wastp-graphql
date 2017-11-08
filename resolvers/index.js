@@ -1,10 +1,16 @@
-const { merge } = require('lodash')
-const userResolvers = require('./User')
-const tourneyResolvers = require('./Tourney')
-const playerResolvers = require('./Player')
-const teamResolvers = require('./Team')
-const fixtureResolvers = require('./Fixture')
+import { merge } from 'lodash';
+import userResolvers from './User';
+import tourneyResolvers from './Tourney';
+import playerResolvers from './Player';
+import teamResolvers from './Team';
+import fixtureResolvers from './Fixture';
 
-const resolvers = merge(userResolvers, tourneyResolvers, playerResolvers, teamResolvers, fixtureResolvers)
+const resolvers = merge(
+  userResolvers,
+  tourneyResolvers,
+  playerResolvers,
+  teamResolvers,
+  fixtureResolvers,
+);
 
-module.exports = resolvers
+export default resolvers;

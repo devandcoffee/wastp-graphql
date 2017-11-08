@@ -52,5 +52,6 @@ const Tourney = `
     start_date: String
     amount_teams: Int
   }
-`
-module.exports = Tourney
+`;
+
+export default Tourney;

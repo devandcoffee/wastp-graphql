@@ -54,6 +54,6 @@ const Player = `
     scores: Int
     games: Int
   }
-`
+`;
 
-module.exports = Player
+export default Player;

@@ -14,6 +14,6 @@ const CommonTypes = `
     pending
     rejected
   }
-`
+`;
 
-module.exports = CommonTypes
+export default CommonTypes;

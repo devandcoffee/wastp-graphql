@@ -8,6 +8,6 @@ const Game = `
     visitant_score: Int
     date: String
   }
-`
+`;
 
-module.exports = Game
+export default Game;

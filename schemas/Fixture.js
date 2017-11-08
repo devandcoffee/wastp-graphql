@@ -4,5 +4,6 @@ const Fixture = `
     name: String
     games: [Game]
   }
-`
-module.exports = Fixture
+`;
+
+export default Fixture;

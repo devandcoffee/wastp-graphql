@@ -57,6 +57,6 @@ const Team = `
     goals_in_favor: Int
     goals_against: Int
   }
-`
+`;
 
-module.exports = Team
+export default Team;

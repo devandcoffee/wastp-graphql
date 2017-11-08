@@ -4,10 +4,10 @@ const config = {
     host: '',
     user: '',
     password: '',
-    database: ''
+    database: '',
   },
   firebaseUri: '',
   token: '',
-}
+};
 
-module.exports = config
+export default config;
