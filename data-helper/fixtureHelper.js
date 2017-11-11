@@ -57,6 +57,6 @@ const createSchedule = (teams) => {
   return fixtures;
 };
 
-export default {
+module.exports = {
   createSchedule,
 };

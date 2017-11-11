@@ -9,7 +9,7 @@ const TourneyTypes = Object.freeze({
   CUP: 'cup',
 });
 
-export default {
+module.exports = {
   Status,
   TourneyTypes,
 };

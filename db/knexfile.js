@@ -1,6 +1,6 @@
-import config from '../config';
+const config = require('./database');
 
-export default {
+module.exports = {
 
   development: {
     client: 'pg',
