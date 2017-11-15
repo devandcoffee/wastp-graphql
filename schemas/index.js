@@ -1,12 +1,12 @@
-const { makeExecutableSchema } = require('graphql-tools')
-const resolvers = require('../resolvers')
-const Tourney = require('./Tourney')
-const User = require('./User')
-const Player = require('./Player')
-const Team = require('./Team')
-const Fixture = require('./Fixture')
-const Game = require('./Game')
-const CommonTypes = require('./CommonTypes')
+import { makeExecutableSchema } from 'graphql-tools';
+import resolvers from '../resolvers';
+import Tourney from './Tourney';
+import User from './User';
+import Player from './Player';
+import Team from './Team';
+import Fixture from './Fixture';
+import Game from './Game';
+import CommonTypes from './CommonTypes';
 
 const rootQuery = `
   type Query {
@@ -85,11 +85,11 @@ const rootQuery = `
     createTourneySchedule(id: Int!): [Fixture]
     deleteTourneySchedule(id: Int!): [Fixture]
   }
-`
+`;
 
 const schema = makeExecutableSchema({
   typeDefs: [rootQuery, Tourney, User, Player, Team, Fixture, Game, CommonTypes],
-  resolvers
-})
+  resolvers,
+});
 
-module.exports = schema
+export default schema;

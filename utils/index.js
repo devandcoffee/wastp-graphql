@@ -1,8 +1,8 @@
-const { Unauthorized, Forbidden, NotFound, BadRequest } = require('./errors')
+import { Unauthorized, Forbidden, NotFound, BadRequest } from './errors';
 
-module.exports = {
+export default {
   Unauthorized,
   Forbidden,
   NotFound,
   BadRequest,
-}
+};

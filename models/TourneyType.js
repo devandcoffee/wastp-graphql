@@ -1,9 +1,9 @@
-const Model = require('./CustomModel')
-const path = require('path')
+import path from 'path';
+import Model from './CustomModel';
 
 class TourneyType extends Model {
   static get tableName() {
-    return 'tourneys_types'
+    return 'tourneys_types';
   }
 
   static get relationMappings() {
@@ -13,11 +13,11 @@ class TourneyType extends Model {
         modelClass: path.join(__dirname, '/Tourney'),
         join: {
           from: 'tourneys_types.id',
-          to: 'tourneys.tourney_type_id'
-        }
-      }
-    }
+          to: 'tourneys.tourney_type_id',
+        },
+      },
+    };
   }
 }
 
-module.exports = TourneyType
+export default TourneyType;
